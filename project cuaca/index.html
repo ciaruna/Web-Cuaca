@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi Cuaca Real-time</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #d2e3f6, #f0f8ff); /* Gradient background */
+            color: #333;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px; /* Lebar container utama */
+            box-sizing: border-box;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            background: linear-gradient(to right, #e0f2f7, #c6e2f1); /* Gradient header background */
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            top: -30px; /* Mengangkat sedikit ke atas */
+            margin-bottom: -10px; /* Menyesuaikan margin bawah */
+        }
+
+        .header-icon {
+            font-size: 40px; /* Ukuran ikon */
+            margin-right: 15px;
+            color: #f7d636; /* Warna ikon matahari/awan */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        /* Ikon matahari sederhana, Anda bisa mengganti ini dengan gambar SVG */
+        .header-icon::before {
+            content: "☀️"; /* Ikon default, bisa diganti dengan awan juga "☁️" */
+        }
+
+        h1 {
+            color: #004080;
+            font-size: 1.8em;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .input-section {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        #cityInput {
+            flex-grow: 1;
+            padding: 12px 20px;
+            border: 1px solid #dcdcdc;
+            border-radius: 10px;
+            font-size: 1em;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        #cityInput:focus {
+            outline: none;
+            border-color: #7abeff;
+            box-shadow: 0 0 0 3px rgba(122, 190, 255, 0.2);
+        }
+
+        #getWeatherButton {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        #getWeatherButton:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+        #getWeatherButton:active {
+            transform: translateY(0);
+        }
+
+        #weather-container {
+            background-color: #f8fcff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border-top: 5px solid #a6d8f0; /* Garis biru di atas */
+        }
+
+        .weather-info h2 {
+            color: #0056b3;
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .weather-icon-display {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px auto;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .weather-info p {
+            margin: 8px 0;
+            font-size: 1.1em;
+            line-height: 1.4;
+            color: #555;
+            text-align: left; /* Teks info cuaca rata kiri */
+            padding-left: 20%; /* Sedikit indentasi */
+        }
+        .weather-info p strong {
+            color: #333;
+        }
+
+        .error-message {
+            color: #d9534f;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="header-icon"></span> <h1>Informasi Cuaca Real-time</h1>
+        </div>
+
+        <div class="input-section">
+            <input type="text" id="cityInput" placeholder="Masukkan nama kota">
+            <button id="getWeatherButton">Lihat Cuaca</button>
+        </div>
+
+        <div id="weather-container">
+            <p style="text-align: center; color: #777;">Masukkan nama kota di atas dan klik "Lihat Cuaca".</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
